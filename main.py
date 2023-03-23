@@ -27,10 +27,16 @@ kilometer = np.array(Kilometer)
 
 X_train, X_test, y_train, y_test = ms.train_test_split(liter, kilometer, test_size=0.2, random_state=0)
 
-X_train = pd.DataFrame(X_train, columns=["liter"])
-y_train = pd.DataFrame(y_train, columns=["kilomter"])
-X_test = pd.DataFrame(X_test, columns=["liter"])
-y_train = pd.DataFrame(y_train, columns=["kilomter"])
+# X_train = pd.DataFrame(X_train, columns=["liter"])
+# y_train = pd.DataFrame(y_train, columns=["kilomter"])
+# X_test = pd.DataFrame(X_test, columns=["liter"])
+# y_train = pd.DataFrame(y_train, columns=["kilomter"])
+
+# Merubah array menjadi 1 Kolom
+X_train = np.array(X_train).reshape((len(X_train), 1))
+y_train = np.array(y_train).reshape((len(y_train), 1))
+X_test = np.array(X_test).reshape((len(X_test), 1))
+y_test = np.array(y_test).reshape((len(y_test), 1))
 
 model = lm.LinearRegression()
 model.fit(X_train, y_train)
