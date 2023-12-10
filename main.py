@@ -3,9 +3,18 @@ import numpy as np
 import sklearn.model_selection as ms
 import sklearn.linear_model as lm
 import pandas as pd
+import mariadb
 
+# Source Code for Mysql Database
+# mydb = mysql.connector.connect(
+#     host = "localhost",
+#     user = "root",
+#     password = "",
+#     database = "bensin",
+# )
 
-mydb = mysql.connector.connect(
+# Source Code for Mariadb Database
+mydb = mariadb.connect(
     host = "localhost",
     user = "root",
     password = "123456",
@@ -14,7 +23,7 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT * FROM bensin")
+mycursor.execute("SELECT * FROM tableName")
 
 myresult = mycursor.fetchall()
 
